@@ -23,11 +23,19 @@ export default class Homepage extends Component {
       <Page { ...this.props }>
         <div className="row">
           <div className="col-sm-6">
+            <div className="card" style={{marginTop: "2.5rem"}}>
+              <div className="card-block">
+                <h4 className="card-title">About</h4>
+                <p className="card-text">
+
+                </p>
+              </div>
+            </div> 
+          </div>
+
+          <div className="col-sm-6">
             <h3>Latest Posts</h3>
             <PagesList pages={ latestPosts } />
-          </div>
-          <div className="col-sm-6">
-          
           </div>
         </div>
       </Page>

@@ -42,11 +42,14 @@ class Post extends Component {
         }
       >
         {props.children}
-        <Disqus identifier={head.id}
-                title={head.title}
-                shortname="the-duke"
-                url={"http://theduke.at/" + head.route}
-                />
+
+        <div className="comments" style={{marginTop: "5rem"}}>
+          <Disqus identifier={head.id}
+                  title={head.title}
+                  shortname="the-duke"
+                  url={"http://theduke.at/" + head.route}
+                  />
+        </div>
       </Page>
     )
   }

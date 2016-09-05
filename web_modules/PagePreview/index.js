@@ -22,7 +22,11 @@ const PagePreview = (page) => {
         img = "iconmonstr-help-1.svg";  
         break;
     }
-    img = (<Svg svg={require("../icons/" + img)} className="card-img-top" width="5rem" />);
+    img = (
+      <div style={{textAlign: "center"}}>
+        <Svg svg={require("../icons/" + img)} className="card-img-top" width="5rem" />
+      </div>
+    );
   }
 
   return (
@@ -30,7 +34,7 @@ const PagePreview = (page) => {
       {img}
       <div className="card-block">
         <Link to={page.__url}> 
-          <h4 className="card-title">{ page.title }</h4>
+          <h5 className="card-title">{ page.title }</h5>
         </Link>
         <p className="card-text">{ page.summary }</p>
         <p className="card-text">

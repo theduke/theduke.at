@@ -68,12 +68,12 @@ export default class Header extends Component {
         <ul className="nav navbar-nav pull-xs-right">
           <li className="nav-item">
             <a href="https://github.com/theduke" className="nav-link" target="_blank">
-              <i style={{fontSize: "25px"}} className="fa fa-github-square" aria-hidden="true"></i>
+              <i style={{fontSize: "30px"}} className="fa fa-4 fa-github-square" aria-hidden="true"></i>
             </a>
           </li>
           <li className="nav-item">
             <a href="https://twitter.com/theduke_at" className="nav-link" target="_blank">
-              <i style={{fontSize: "25px"}} className={"fa " + commonStyles["fa-twtr-custom"]} aria-hidden="true"></i>
+              <i style={{fontSize: "30px"}} className={"fa " + commonStyles["fa-twtr-custom"]} aria-hidden="true"></i>
             </a>
           </li>
         </ul>

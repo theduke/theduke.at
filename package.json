@@ -4,6 +4,7 @@
   "homepage": "http://theduke.at",
   "twitter": "theduke_at",
   "github": "https://github.com/theduke",
+  "googleAnalyticsUA": "UA-76349880-1",
   "repository": "git@github.com:theduke/theduke.github.io.git",
   "scripts": {
     "lint:js": "eslint --ignore-path .gitignore --fix .",
@@ -90,6 +91,7 @@
   },
   "dependencies": {
     "moment": "^2.14.1",
-    "react-disqus-thread": "^0.4.0"
+    "react-disqus-thread": "^0.4.0",
+    "react-google-analytics": "^0.2.0"
   }
 }
