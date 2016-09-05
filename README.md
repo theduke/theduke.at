@@ -1,19 +1,10 @@
-# [Phenomic](https://github.com/MoOx/phenomic) boilerplate
+# theduke.at
 
-## Install dependencies
+[theduke.at](http://theduke.at) website, built with [Phenomic](https://phenomic.io/).
 
-```sh
-npm install
-```
+## License
 
-## Run development server
+The generic code for generating the Website is licensed under [MIT](https://opensource.org/licenses/MIT).
 
-```sh
-npm start
-```
-
-## Build for production
-
-```sh
-npm run build
-```
+The page content itself (blog posts, pages, all specific information) is under 
+full copyright, and may not be duplicated without explicit permission.
