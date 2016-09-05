@@ -26,14 +26,16 @@ export default class Layout extends Component {
     return (
       <div className={ styles.layout }>
         <Helmet
-          meta={ [
+          meta={[
             {
               name: "generator", content: `${
               process.env.PHENOMIC_NAME } ${ process.env.PHENOMIC_VERSION }`,
             },
             { property: "og:site_name", content: pkg.name },
             { name: "twitter:site", content: `@${ pkg.twitter }` },
-          ] }
+            {name: "google-site-verification", content: "dUGKC3UE2cH70_XpZkV_XVmoZCxijoR94JMoegZmZOk"},
+            {name: "msvalidate.01", content: "822A50ED321AC55835A648686F2CA301"},
+          ]}
           script={[
             {src: "https://cdn.polyfill.io/v2/polyfill.min.js"},
           ]}
