@@ -3,10 +3,11 @@ layout: Post
 type: blog
 category: develop
 id: f0ec1aff-2bbf-413d-b163-f13278da9142
-title: The Sad State of File Sharing across Devices
-date: 2016-09-04
+title: The Sad State of File Sharing Across Devices
+date: 2016-09-04T22:00:00+02:00
 tags: [rant, ubiquitous-computing, file-sharing, file-transfer, interoperability]
 route: "blog/develop/sad-state-of-file-sharing"
+images: {"xkcd": "./file_transfer.png"}
 ---
 
 In the 90ies [Mark Weiser](http://www.ubiq.com/hypertext/weiser/UbiHome.html) coined 
@@ -56,6 +57,10 @@ Everytime I run into one of those situations, I just get really angry and
 frustrated.
 Why is it still such a hassle to do accomplish these tasks, in 2016?
 
+This [XKCD](https://xkcd.com/949/) catpures it well:
+
+![XKCD 949](https://imgs.xkcd.com/comics/file_transfer.png "XKCD 949 - File Transfer")
+
 We are starting to use more and more devices everyday, but the software they are
 running is not designed with interoperability as a first class concern or goal.
 
@@ -71,3 +76,6 @@ like Email, messenger apps or Dropbox.
 What the world really needs is a universally accepted protocol for device discovery
 and file sharing, which works over different communication channels (Bluetooth, WiFi) 
 and is installed by default on every device.
+
+For some discussion, check out this 
+[Hackernews thread](https://news.ycombinator.com/item?id=12424258) I started.

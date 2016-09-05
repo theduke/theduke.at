@@ -4,7 +4,7 @@ type: blog
 category: develop
 id: 1a6a226e-cf19-47fa-b951-27b2f984cfbe
 title: Generate UUIDs on the Command Line
-date: 2016-09-05
+date: 2016-09-05T05:00:00+02:00
 tags: [uuid, uuids, identifiers, linux, os-x, python, bash, uuidgen, develop, random-tip]
 route: "blog/develop/generate-uuids-on-the-command-line"
 ---
