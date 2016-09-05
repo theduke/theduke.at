@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from "react"
 import moment from "moment"
+import Disqus from "react-disqus-thread"
 
 import Page from "../Page"
 
@@ -18,14 +19,11 @@ class Post extends Component {
       <Page
         { ...props }
         header={
-          <header>
+          <header className="text-muted">
           {
             date &&
             <div>
-              <i className="fa fa-clock-o" aria-hidden="true"></i>
-              <span className="sr-only">Date</span>
-              {" "}
-              <time datetime={ date.format() }>
+              <time dateTime={ date.format() }>
                 { date.format("YYYY-MM-DD") }
               </time>
             </div>
@@ -42,7 +40,14 @@ class Post extends Component {
           }
           </header>
         }
-      />
+      >
+        {props.children}
+        <Disqus identifier={head.id}
+                title={head.title}
+                shortname="the-duke"
+                url={"http://theduke.at/" + head.route}
+                />
+      </Page>
     )
   }
 }

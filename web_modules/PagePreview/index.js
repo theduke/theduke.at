@@ -22,11 +22,11 @@ const PagePreview = (page) => {
         img = "iconmonstr-help-1.svg";  
         break;
     }
-    img = (<Svg svg={require("../icons/" + img)} className="card-img-top" width="8rem" />);
+    img = (<Svg svg={require("../icons/" + img)} className="card-img-top" width="5rem" />);
   }
 
   return (
-    <div className="card" style={{width: "20rem"}}>
+    <div className="card">
       {img}
       <div className="card-block">
         <Link to={page.__url}> 
@@ -35,6 +35,15 @@ const PagePreview = (page) => {
         <p className="card-text">{ page.summary }</p>
         <p className="card-text">
           <small className="text-muted">{ date }</small>
+          {
+            page.tags &&
+            <ul className="list-inline">
+              <li className="list-inline-item text-muted">
+                <i className="fa fa-tags"></i>
+              </li>
+              {page.tags.map(t => <li className="list-inline-item"><small className="text-muted"><em>{t}</em></small></li>)}
+            </ul>
+          }
         </p>
       </div>
     </div>

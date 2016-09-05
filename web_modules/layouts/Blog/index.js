@@ -6,7 +6,7 @@ import PagesList from "../../PagesList"
 
 const numberOfLatestPosts = 10
 
-export default class Homepage extends Component {
+export default class Blog extends Component {
   static contextTypes = {
     collection: PropTypes.array.isRequired,
   }
@@ -21,17 +21,8 @@ export default class Homepage extends Component {
 
     return (
       <Page { ...this.props }>
-        <div className="row">
-          <div className="col-sm-6">
-            <h3>Latest Posts</h3>
-            <PagesList pages={ latestPosts } />
-          </div>
-          <div className="col-sm-6">
-          
-          </div>
-        </div>
+        <PagesList pages={ latestPosts } />
       </Page>
-
     )
   }
 }

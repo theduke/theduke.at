@@ -89,6 +89,7 @@
     "phenomic": "^0.16.2"
   },
   "dependencies": {
-    "moment": "^2.14.1"
+    "moment": "^2.14.1",
+    "react-disqus-thread": "^0.4.0"
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from "react"
 import { Link } from "react-router"
 
-// import styles from "./index.css"
+import commonStyles from "../styles/common.css"
 // import Svg from "react-svg-inline"
 // import twitterSvg from "../icons/iconmonstr-twitter-1.svg"
 // import gitHubSvg from "../icons/iconmonstr-github-1.svg"
@@ -58,19 +58,22 @@ export default class Header extends Component {
       <nav className="navbar navbar-fixed-top navbar-dark bg-inverse">
         <Link to="/" className="navbar-brand">{"theduke.at"}</Link>
         <ul className="nav navbar-nav">
-          <li className="nav-item active">
-            <Link to="/" className="nav-link">{ "Blog" }</Link>
+          <li className="nav-item">
+            <Link to="/about" className="nav-link">{ "About" }</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/blog" className="nav-link">{ "Blog" }</Link>
           </li>
         </ul>
         <ul className="nav navbar-nav pull-xs-right">
-          <li className="nav-item active">
+          <li className="nav-item">
             <a href="https://github.com/theduke" className="nav-link" target="_blank">
-              <i style={{"font-size": "25px"}} className="fa fa-github-square" aria-hidden="true"></i>
+              <i style={{fontSize: "25px"}} className="fa fa-github-square" aria-hidden="true"></i>
             </a>
           </li>
-          <li className="nav-item active">
+          <li className="nav-item">
             <a href="https://twitter.com/theduke_at" className="nav-link" target="_blank">
-              <i style={{"font-size": "25px"}} className="fa fa-twitter-square" aria-hidden="true"></i>
+              <i style={{fontSize: "25px"}} className={"fa " + commonStyles["fa-twtr-custom"]} aria-hidden="true"></i>
             </a>
           </li>
         </ul>

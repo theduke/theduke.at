@@ -8,6 +8,7 @@ import Page from "../layouts/Page"
 import PageError from "../layouts/PageError"
 import PageLoading from "../layouts/PageLoading"
 import Homepage from "../layouts/Homepage"
+import Blog from "../layouts/Blog"
 import Post from "../layouts/Post"
 
 require("../styles/hightlight-js.global.css")
@@ -25,6 +26,7 @@ class PageContainer extends Component {
           PageError,
           PageLoading,
           Homepage,
+          Blog,
           Post,
         } }
       />
