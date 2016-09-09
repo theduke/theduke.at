@@ -38,7 +38,7 @@ export const makeConfig = (config = {}) => {
 
         // *.js => babel + eslint
         {
-          test: /\.js$/,
+          test: /\.jsx?$/,
           loaders: [
             `babel-loader${
               config.dev
@@ -49,7 +49,7 @@ export const makeConfig = (config = {}) => {
           ],
           include: [
             path.resolve(__dirname, "scripts"),
-            path.resolve(__dirname, "web_modules"),
+            path.resolve(__dirname, "src"),
           ],
         },
 
@@ -61,7 +61,7 @@ export const makeConfig = (config = {}) => {
         {
           test: /\.css$/,
           exclude: /\.global\.css$/,
-          include: path.resolve(__dirname, "web_modules"),
+          include: path.resolve(__dirname, "src"),
           loader: ExtractTextPlugin.extract(
             "style-loader",
             [ `css-loader?modules&localIdentName=${
@@ -76,10 +76,19 @@ export const makeConfig = (config = {}) => {
         // *.global.css => global (normal) css
         {
           test: /\.global\.css$/,
-          include: path.resolve(__dirname, "web_modules"),
+          exclude: ["node_modules"],
           loader: ExtractTextPlugin.extract(
             "style-loader",
             [ "css-loader", "postcss-loader" ].join("!"),
+          ),
+        },
+
+        {
+          test: /\.scss$/,
+          exclude: ["node_modules"],
+          loader: ExtractTextPlugin.extract(
+            "style-loader",
+            [ "css-loader", "sass-loader" ].join("!"),
           ),
         },
         // ! \\
@@ -171,7 +180,7 @@ export const makeConfig = (config = {}) => {
     },
 
     resolve: {
-      extensions: [ ".js", ".json", "" ],
+      extensions: [ ".js", ".jsx", ".json", "" ],
       root: [ path.join(__dirname, "node_modules") ],
     },
     resolveLoader: { root: [ path.join(__dirname, "node_modules") ] },

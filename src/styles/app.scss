@@ -1,0 +1,147 @@
+
+
+$fontOpenSans: 'Open Sans', sans-serif;
+$fontLora: 'Lora', serif;
+$fontTangerine: 'Tangerine', cursive;
+$fontLato: 'Lato', sans-serif;
+$fontSourceSansPro: 'Source Sans Pro', sans-serif;
+
+$fontMain: $fontSourceSansPro;
+$fontHeadings: $fontLora;
+$fontLogo: $fontTangerine;
+
+$grey1: #373a3c;
+
+$colorMain: $grey1;
+
+body {
+  padding-top: 6rem;
+  font-family: $fontMain;
+  color: $colorMain;
+  font-size: 18px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $fontHeadings;
+}
+
+summary {
+  font-size: 1.5em;
+  margin-left: 1em;
+}
+
+.phenomic-HeadingAnchor {
+  display: none;
+}
+
+.fa-twtr-custom::before {
+  content: "\f081";
+}
+
+.main-header {
+
+  .navbar {
+    padding: 0.5rem 2rem 0 2rem;
+    background-color: white;
+    box-shadow: 3px -3px 3px 0 rgba(0,0,0,0.19) , 3px 0 3px 0 rgba(0,0,0,0.19) , 0 3px 3px 0 rgba(0,0,0,0.23);
+  }
+
+  a {
+    color: rgb(22,22,22);
+    &:hover {
+      color: rgb(66,66,66);
+      border-bottom: 1px solid rgb(0,0,11);
+    }
+  }
+
+  .navbar-brand {
+    font-family: $fontLogo;
+    font-size: 3rem;
+    line-height: 3rem;
+    margin-right: 5rem;
+  }
+
+  .nav-menu a {
+    font-family: $fontHeadings;
+    font-size: 1.4rem;
+    line-height: 1.5rem;
+    padding: 1.2rem 0 0.75rem 0;
+  }
+
+  .nav-social a {
+    font-size: 1.4rem;
+    padding: 0.95rem 0 0.3rem 0;
+  }
+}
+
+.top-nav {
+  margin-bottom: 3rem;
+
+  a {
+    color: rgb(0,0,11);
+  }
+
+  .brand {
+    font-family: $fontLogo;
+    font-size: 3.5rem;
+  }
+
+  .pages {
+    margin-bottom: 0;
+    margin-top: 2rem;
+
+    a {
+      font-family: $fontHeadings;
+      font-size: 1.4rem;
+      margin-right: 1em;
+    }
+  }
+
+  .social {
+    margin-bottom: 0;
+    margin-top: 2rem;
+    a {
+      &:hover {
+        color: rgb(125,125,125);
+      }
+    }
+  }
+}
+
+.main {
+  margin-bottom: 3rem;
+
+  a {
+    color: black;
+    font-style: italic;
+  }
+}
+
+.main-container {
+  max-width: 960px;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.page-title h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-preview {
+  a {
+    color: $colorMain;
+  }
+}
+
+.footer {
+  text-align: center;
+  color: rgb(130,130,130);
+  margin-bottom: 3rem;
+
+  a {
+    color: rgb(150,150,150);
+  }
+}
