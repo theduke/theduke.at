@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+
+    <link data-react-helmet="true" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Lora|Tangerine|Lato|Source+Sans+Pro">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{{ get_url(path="styles.css") }}">
+
+    {% if config.generate_rss %}
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="rss.xml") }}">
+    {% endif %}
+
+    {% block extra_head %}
+    {% endblock extra_head %}
+</head>
+
+<body>
+<div>
+
+<header class="topnav">
+    <a href="/" class="topnav-brand">theDuke</a>
+
+    <a href="/me" class="topnav-link">Me</a>
+    <a href="/blog" class="topnav-link">Blog</a>
+
+    <div class="topnav-social">
+        <a href="https://github.com/theduke" target="_blank">
+            <i class="fa fa-4 fa-github-square"></i>
+        </a>
+
+        <a href="https://twitter.com/theduke_at" target="_blank">
+            <i class="fa fa-twtr-custom"></i>
+        </a>
+    </div>
+</header>
+
+
+<div class="main">
+    <div class="container main-container">
+        {% block content %}
+        {% include "home.html" %}
+        {% endblock content %}
+    </div>
+</div>
+
+<footer class="footer">
+    <a href="/">theduke.at</a>
+    | &#xA9; Christoph Herzog (theduke),  2017 | Vienna, Austria
+</footer>
+
+</div>
+</body>
+
+</html>

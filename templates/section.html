@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+
+{% block title %}{{ section.title }} | {{ config.title }}{% endblock title %}
+
+{% block content %}
+
+<div>
+    {% include "preview_list.html" %}
+</div>
+{% endblock content %}

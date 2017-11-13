@@ -1,0 +1,15 @@
+title = "theduke.at"
+# The URL the site will be built for
+base_url = "https://theduke.at"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Enable syntax highlighting.
+highlight_code = true
+
+generate_rss = true
+
+[extra]
+# Put all your custom variables here
+main_links = []
