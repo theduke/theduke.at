@@ -14,6 +14,8 @@
         {{ page.content | safe }}
     </div>
 
+    {% if not page.extra.disable_comments %}
     {{ macros::disqus(id=page.extra.id) }}
+    {% endif %}
 </div>
 {% endblock content %}
