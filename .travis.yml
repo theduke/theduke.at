@@ -18,8 +18,8 @@ script:
   - git checkout master
   - rm -r *
   - mv /tmp/public/* ./
+  - echo "theduke.at" > CNAME
   - git status
   - git add --all
   - git commit -m "$(echo 'Update ' $(date))"
   - git push
-
