@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://theduke.at/</loc>
+    </url>
+    <url>
+        <loc>https://theduke.at/blog/</loc>
+    </url>
+    <url>
+        <loc>https://theduke.at/blog/develop/generate-uuids-on-the-command-line/</loc>
+        <lastmod>2016-09-05</lastmod>
+    </url>
+    <url>
+        <loc>https://theduke.at/blog/develop/how-to-use-google-analytics-with-phenomic/</loc>
+        <lastmod>2016-09-06</lastmod>
+    </url>
+    <url>
+        <loc>https://theduke.at/blog/develop/prevent-adblock-from-blocking-fontawesome-icons/</loc>
+        <lastmod>2016-09-05</lastmod>
+    </url>
+    <url>
+        <loc>https://theduke.at/blog/develop/sad-state-of-file-sharing/</loc>
+        <lastmod>2016-09-04</lastmod>
+    </url>
+    <url>
+        <loc>https://theduke.at/blog/science/beginners-guide-to-creating-grouped-and-stacked-bar-charts-in-r-with-ggplot2/</loc>
+        <lastmod>2016-09-09</lastmod>
+    </url>
+    <url>
+        <loc>https://theduke.at/me/</loc>
+        <lastmod>2017-11-12</lastmod>
+    </url>
+</urlset>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-36849244-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-36849244-1');
+    </script>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title>Generate UUIDs on the Command Line | theduke.at</title>
+
+    <link data-react-helmet="true" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Lora|Tangerine|Lato|Source+Sans+Pro">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/styles.css">
+
+    
+
+    
+    
+</head>
+
+<body>
+<div>
+
+<header class="topnav">
+    <a href="/" class="topnav-brand">theDuke</a>
+
+    <!-- <a href="/me" class="topnav-link">Me</a> -->
+    <a href="/blog" class="topnav-link">Blog</a>
+
+    <div class="topnav-social">
+        <a href="https://github.com/theduke" target="_blank">
+            <i class="fa fa-4 fa-github-square"></i>
+        </a>
+
+        <a href="https://twitter.com/theduke_at" target="_blank">
+            <i class="fa fa-twtr-custom"></i>
+        </a>
+    </div>
+</header>
+
+
+<div class="main">
+    <div class="container main-container">
+        
+<div class="post">
+    <h1 class="page-title display-3">Generate UUIDs on the Command Line</h1>
+    <span class="post-date">2016-09-05</span>
+
+    <div class="page-content">
+        <p><a href="https://tools.ietf.org/html/rfc4122">UUIDs</a> are becoming more popular in
+distributed systems, and can increasingly be found in databases and applications.</p>
+<p>Sometimes you just need a quick way to generate a UUID, be it for writing
+a unit test, manually testing a function or creating some stub data.</p>
+<p>Here are some methods for creating random (version 4) UUIDs straight from the command line:</p>
+<h4 id="uuidgen-linux-and-os-x">uuidgen (Linux and OS X)</h4>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#65737e;"># Single UUID:
+</span><span style="color:#bf616a;">uuidgen -r
+</span><span style="color:#65737e;"># 100 UUIDs:
+</span><span style="color:#bf616a;">seq</span><span style="color:#c0c5ce;"> 100 | </span><span style="color:#bf616a;">xargs -I</span><span style="color:#c0c5ce;"> -- uuidgen -r 
+</span></code></pre>
+<p>The uuidgen command is available by default on OS X, and should be on most
+Linux distros.<br />
+On Debian systems you need the package <code>uuid-runtime</code>, on Arch <code>libutil-linux</code>.</p>
+<h4 id="linux-uuid-proc-file-linux-only">Linux uuid proc file  (Linux only)</h4>
+<p>The Linux kernel has the special proc file <code>/proc/sys/kernel/random/uuid</code>, 
+which will yield a new UUID each time it is read.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#65737e;"># Single UUID:
+</span><span style="color:#bf616a;">cat</span><span style="color:#c0c5ce;"> /proc/sys/kernel/random/uuid
+</span><span style="color:#65737e;"># 100 UUIDs:
+</span><span style="color:#c0c5ce;">seq 100 | </span><span style="color:#bf616a;">xargs -I</span><span style="color:#c0c5ce;"> -- cat /proc/sys/kernel/random/uuid
+</span></code></pre><h4 id="python-portable">Python (portable)</h4>
+<p>Fortunately, Python has the <a href="https://docs.python.org/2/library/uuid.html">uuid</a>
+module in it's standard library, so this method will work on any system with 
+a Python installation.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#65737e;"># Single UUID:
+</span><span style="color:#bf616a;">python -c </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">import uuid; print(uuid.uuid4());</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#65737e;"># 100 UUIDs:
+</span><span style="color:#c0c5ce;">python</span><span style="color:#bf616a;"> -c </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">import uuid; print(&#39;\n&#39;.join([str(uuid.uuid4()) for _ in range(0,100)]));</span><span style="color:#c0c5ce;">&quot;
+</span></code></pre><h4 id="uuidgenerator-net">uuidgenerator.net</h4>
+<p>As a measure of last resort, if you have CURL or wget available, 
+you can use the website 
+<a href="https://www.uuidgenerator.net">uuidgenerator.net</a>, which provides an API for 
+generating UUIDs.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#65737e;"># Single UUID:
+</span><span style="color:#bf616a;">curl</span><span style="color:#c0c5ce;"> https://www.uuidgenerator.net/api/version4
+</span><span style="color:#65737e;"># 100 UUIDs:
+</span><span style="color:#c0c5ce;">curl https://www.uuidgenerator.net/api/version4/100
+
+</span></code></pre>
+    </div>
+
+    
+    
+<div class="disqus">
+    <div id="disqus_thread"></div>
+
+    <script>
+    var disqus_config = function () {
+        this.page.url = "http://theduke.at";
+        this.page.identifier = "1a6a226e-cf19-47fa-b951-27b2f984cfbe";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://the-duke.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+    
+</div>
+
+    </div>
+</div>
+
+<footer class="footer">
+    <a href="/">theduke.at</a>
+    | &#xA9; Christoph Herzog (theduke),  2017 | Vienna, Austria
+</footer>
+
+</div>
+</body>
+
+</html>

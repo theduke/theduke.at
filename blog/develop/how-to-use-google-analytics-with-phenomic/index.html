@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-36849244-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-36849244-1');
+    </script>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title>How To Use Google Analytics With Phenomic (Static Site Generator) | theduke.at</title>
+
+    <link data-react-helmet="true" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Lora|Tangerine|Lato|Source+Sans+Pro">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/styles.css">
+
+    
+
+    
+    
+</head>
+
+<body>
+<div>
+
+<header class="topnav">
+    <a href="/" class="topnav-brand">theDuke</a>
+
+    <!-- <a href="/me" class="topnav-link">Me</a> -->
+    <a href="/blog" class="topnav-link">Blog</a>
+
+    <div class="topnav-social">
+        <a href="https://github.com/theduke" target="_blank">
+            <i class="fa fa-4 fa-github-square"></i>
+        </a>
+
+        <a href="https://twitter.com/theduke_at" target="_blank">
+            <i class="fa fa-twtr-custom"></i>
+        </a>
+    </div>
+</header>
+
+
+<div class="main">
+    <div class="container main-container">
+        
+<div class="post">
+    <h1 class="page-title display-3">How To Use Google Analytics With Phenomic (Static Site Generator)</h1>
+    <span class="post-date">2016-09-06</span>
+
+    <div class="page-content">
+        <p><a href="http://phenomic.io">Phenomic</a> is a great new 
+<a href="http://www.staticgen.com/">Static Site Generator</a>, based on 
+<a href="https://facebook.github.io/react/">React</a> and <a href="https://webpack.github.io/">Webpack</a>.</p>
+<p>I recently rebuilt this very blog using Phenomic. The development speed
+and productivity is really amazing, thanks to Webpacks hot code reloading.</p>
+<p>While the docs are well-written, they don't mention a way to embed 
+Google Analytics tracking.</p>
+<p>Turns out it is really easy, can be done in four simple steps,
+and won't take you more than 5 minutes. The approach will <em>disable 
+tracking if not in production</em>, and is easily configurable.</p>
+<p>Here we go:</p>
+<h3 id="step-1-install-react-ga-package">Step 1: Install react-ga package</h3>
+<p>To make integration of Googlye Analytics code into React easier, we will use <a href="https://github.com/react-ga/react-ga">react-ga</a>,
+a package written and used by Mozilla.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#bf616a;">npm</span><span style="color:#c0c5ce;"> install</span><span style="color:#bf616a;"> --save</span><span style="color:#c0c5ce;"> react-ga
+</span></code></pre><br/>
+<h3 id="step-2-add-your-ga-tracking-code-to-package-json">Step 2: Add your GA tracking code to package.json</h3>
+<p>We will store the Google Analytics tracking code in <code>package.json</code>, the
+preferred place for all configuration in Phenomic.</p>
+<p><em>my_app/package.json</em>:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">{
+  </span><span style="background-color:#bf616a;color:#2b303b;">...</span><span style="color:#c0c5ce;">
+  &quot;</span><span style="color:#a3be8c;">googleAnalytics</span><span style="color:#c0c5ce;">&quot;: &quot;</span><span style="color:#a3be8c;">UA-xxxxxxx-1</span><span style="color:#c0c5ce;">&quot;,
+  </span><span style="background-color:#bf616a;color:#2b303b;">...</span><span style="color:#c0c5ce;">
+}
+
+</span></code></pre><br/>
+<h3 id="step-3-googleanalyticstracker-component">Step 3: GoogleAnalyticsTracker component</h3>
+<p>We will wrap our whole application inside of a special component, which will
+use react-ga to track each page transition.</p>
+<p>I largely borrowed the component used by the official 
+<a href="https://github.com/MoOx/phenomic/tree/master/docs">Phenomic documentation</a>.</p>
+<p>my_app/web_modules/GoogleAnalyticsTracker.jsx</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">import </span><span style="color:#bf616a;">React</span><span style="color:#c0c5ce;">, { </span><span style="color:#bf616a;">Component</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">PropTypes </span><span style="color:#c0c5ce;">} </span><span style="color:#b48ead;">from </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">react</span><span style="color:#c0c5ce;">&quot;;
+
+</span><span style="color:#b48ead;">import </span><span style="color:#bf616a;">ga </span><span style="color:#b48ead;">from </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">react-google-analytics</span><span style="color:#c0c5ce;">&quot;;
+</span><span style="color:#b48ead;">const </span><span style="color:#bf616a;">GoogleAnalyticsInitiailizer </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">ga</span><span style="color:#c0c5ce;">.Initializer;
+
+</span><span style="color:#b48ead;">const </span><span style="color:#bf616a;">isProduction </span><span style="color:#c0c5ce;">= process.env.NODE_ENV === &quot;</span><span style="color:#a3be8c;">production</span><span style="color:#c0c5ce;">&quot;;
+</span><span style="color:#b48ead;">const </span><span style="color:#bf616a;">isClient </span><span style="color:#c0c5ce;">= typeof window !== &quot;</span><span style="color:#a3be8c;">undefined</span><span style="color:#c0c5ce;">&quot;;
+
+</span><span style="color:#b48ead;">export default class </span><span style="color:#ebcb8b;">GoogleAnalyticsTracker </span><span style="color:#b48ead;">extends </span><span style="color:#a3be8c;">Component </span><span style="color:#eff1f5;">{
+
+  </span><span style="color:#b48ead;">static </span><span style="color:#bf616a;">propTypes </span><span style="color:#c0c5ce;">= </span><span style="color:#eff1f5;">{
+    children: </span><span style="color:#ebcb8b;">PropTypes</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">oneOfType</span><span style="color:#eff1f5;">([ </span><span style="color:#ebcb8b;">PropTypes</span><span style="color:#eff1f5;">.array, </span><span style="color:#ebcb8b;">PropTypes</span><span style="color:#eff1f5;">.object ]),
+    params: </span><span style="color:#ebcb8b;">PropTypes</span><span style="color:#eff1f5;">.object.isRequired,
+  };
+
+  </span><span style="color:#b48ead;">static </span><span style="color:#bf616a;">contextTypes </span><span style="color:#c0c5ce;">= </span><span style="color:#eff1f5;">{
+    metadata: </span><span style="color:#ebcb8b;">PropTypes</span><span style="color:#eff1f5;">.object.isRequired,
+  };
+
+  </span><span style="color:#8fa1b3;">componentWillMount</span><span style="color:#eff1f5;">() {
+    </span><span style="color:#b48ead;">if </span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">isClient</span><span style="color:#eff1f5;">) {
+      </span><span style="color:#b48ead;">const </span><span style="color:#eff1f5;">{ </span><span style="color:#bf616a;">pkg </span><span style="color:#eff1f5;">} </span><span style="color:#c0c5ce;">= </span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">.context.metadata;
+      </span><span style="color:#b48ead;">if </span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">isProduction</span><span style="color:#eff1f5;">) {
+        </span><span style="color:#bf616a;">ga</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">create</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">pkg</span><span style="color:#eff1f5;">.googleAnalytics, </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">auto</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);
+      }
+      </span><span style="color:#b48ead;">else </span><span style="color:#eff1f5;">{
+        console.</span><span style="color:#96b5b4;">info</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">ga.create</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#bf616a;">pkg</span><span style="color:#eff1f5;">.googleAnalytics);
+      }
+      </span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">logPageview</span><span style="color:#eff1f5;">();
+    }
+  }
+
+  </span><span style="color:#8fa1b3;">componentWillReceiveProps</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">props</span><span style="color:#eff1f5;">) {
+    </span><span style="color:#b48ead;">if </span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">props</span><span style="color:#eff1f5;">.params.splat </span><span style="color:#c0c5ce;">!== </span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">.props.params.splat) {
+      </span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">logPageview</span><span style="color:#eff1f5;">();
+    }
+  }
+
+  </span><span style="color:#8fa1b3;">logPageview</span><span style="color:#eff1f5;">() {
+    </span><span style="color:#b48ead;">if </span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">isClient</span><span style="color:#eff1f5;">) {
+      </span><span style="color:#b48ead;">if </span><span style="color:#eff1f5;">(</span><span style="color:#bf616a;">isProduction</span><span style="color:#eff1f5;">) {
+        </span><span style="color:#bf616a;">ga</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">set</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">page</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, window.location.pathname);
+        </span><span style="color:#bf616a;">ga</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">send</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">pageview</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">);
+      }
+      </span><span style="color:#b48ead;">else </span><span style="color:#eff1f5;">{
+        console.</span><span style="color:#96b5b4;">info</span><span style="color:#eff1f5;">(</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">New pageview</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#eff1f5;">, window.location.href);
+      }
+    }
+  }
+
+  </span><span style="color:#8fa1b3;">render</span><span style="color:#eff1f5;">() {
+    </span><span style="color:#b48ead;">return </span><span style="color:#eff1f5;">(
+      </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">div</span><span style="color:#c0c5ce;">&gt;
+        </span><span style="color:#eff1f5;">{ this.props.</span><span style="color:#bf616a;">children </span><span style="color:#eff1f5;">}
+        </span><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">GoogleAnalyticsInitiailizer </span><span style="color:#c0c5ce;">/&gt;
+      &lt;/</span><span style="color:#96b5b4;">div&gt;
+    )
+  }
+}
+</span></code></pre>
+<p>Simple enough.<br />
+This component will wrap our app, and persist each route change to Google Analytics.<br />
+Note that tracking is disabled when not running in the browser, and for development.</p>
+<br>
+<h3 id="step-4-start-using-the-wrapper">Step 4: Start using the wrapper</h3>
+<p>Now we only have to wrap our app with the tracker.</p>
+<p>The place to do this is in your <em>root component</em> used for react-router.<br />
+If you did not change the default setup, the root component is found at 
+<code>my_app/web_modules/LayoutContainer/index.js</code>.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#c0c5ce;">
+</span><span style="color:#b48ead;">import </span><span style="color:#bf616a;">GATracker </span><span style="color:#b48ead;">from </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">..//GoogleAnalyticsTracker</span><span style="color:#c0c5ce;">&quot;
+
+...
+
+  </span><span style="color:#bf616a;">render</span><span style="color:#c0c5ce;">() {
+    ...
+    </span><span style="color:#bf616a;">return </span><span style="color:#c0c5ce;">(
+      &lt;</span><span style="color:#bf616a;">GATracker params</span><span style="color:#c0c5ce;">={this.props.</span><span style="color:#bf616a;">params</span><span style="color:#c0c5ce;">}&gt;
+        ...
+      &lt;/</span><span style="color:#96b5b4;">GATracker&gt; 
+    );
+  }
+
+</span><span style="color:#d08770;">...
+</span></code></pre>
+<p>Take care not to remove anything else. Just add the import, and wrap the 
+content returned by render in the <GATracker> component.</p>
+<br/>
+<h3 id="test">Test</h3>
+<p>That's it, we're done.<br />
+You can test your changes in development mode by checking the console.<br />
+The component will log  &quot;New pageview...&quot; when not in production.</p>
+<p>If all works well, you can now upload your site and enjoy your obessions with 
+page views and visitors.</p>
+
+    </div>
+
+    
+    
+<div class="disqus">
+    <div id="disqus_thread"></div>
+
+    <script>
+    var disqus_config = function () {
+        this.page.url = "http://theduke.at";
+        this.page.identifier = "ee1cc83d-abf3-4a60-b1bd-7d1d87c9410d";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://the-duke.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+    
+</div>
+
+    </div>
+</div>
+
+<footer class="footer">
+    <a href="/">theduke.at</a>
+    | &#xA9; Christoph Herzog (theduke),  2017 | Vienna, Austria
+</footer>
+
+</div>
+</body>
+
+</html>

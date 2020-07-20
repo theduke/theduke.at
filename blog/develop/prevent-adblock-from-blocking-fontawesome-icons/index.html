@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-36849244-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-36849244-1');
+    </script>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title>Prevent Adblock from Blocking Fontawesome Icons | theduke.at</title>
+
+    <link data-react-helmet="true" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Lora|Tangerine|Lato|Source+Sans+Pro">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/styles.css">
+
+    
+
+    
+    
+</head>
+
+<body>
+<div>
+
+<header class="topnav">
+    <a href="/" class="topnav-brand">theDuke</a>
+
+    <!-- <a href="/me" class="topnav-link">Me</a> -->
+    <a href="/blog" class="topnav-link">Blog</a>
+
+    <div class="topnav-social">
+        <a href="https://github.com/theduke" target="_blank">
+            <i class="fa fa-4 fa-github-square"></i>
+        </a>
+
+        <a href="https://twitter.com/theduke_at" target="_blank">
+            <i class="fa fa-twtr-custom"></i>
+        </a>
+    </div>
+</header>
+
+
+<div class="main">
+    <div class="container main-container">
+        
+<div class="post">
+    <h1 class="page-title display-3">Prevent Adblock from Blocking Fontawesome Icons</h1>
+    <span class="post-date">2016-09-05</span>
+
+    <div class="page-content">
+        <p>The <a href="https://adblockplus.org">Adblock Plus</a> Chrome extension has started 
+to block some of the beloved <a href="http://fontawesome.io/">FontAwesome</a> icons, when
+the user enables the &quot;Remove Social Media Buttons&quot; setting.</p>
+<p>To circument this, there are several approches.</p>
+<p>The one I found most convenient is to just define a custom class for the 
+affected icon.<br />
+Here is how you do it:</p>
+<p>FontAwesome works by adding a CSS <code>content: &quot;\fXX&quot;</code> directive with the <code>:before</code>
+pseudo selector. It's trivial to create a custom icon class. Let's try it for 
+the <a href="http://fontawesome.io/icon/twitter/">Twitter icon</a>.</p>
+<p>
+<div class="row">
+  <style type="text/css">.fa-custom-twtr:before {content: "\f099"; }</style>
+  <div class="col-md-6">
+    <pre><code class="hljs language-css">
+      .fa-custom-twtr:before {
+        content: "\f099"; 
+      }
+    </code></pre>
+    <pre><code class="hljs language-html">
+      &lt;i class="fa fa-custom-twtr">&lt;/i>
+    </code></pre>
+  </div>
+  <div class="col-md-6">
+    <i class="fa fa-custom-twtr fa-5x"></i>  
+  </div>
+</div>
+</p>
+<p>To extend it to other icons, just add additional classes and change the 
+<code>content: &quot;\fXX&quot;</code> value to the <em>unicode</em> value of the icon, which can be
+found on the individual icon pages just under the header.</p>
+<p>The icon list is here: <a href="http://fontawesome.io/icons/">FontAwesome Icons</a>.</p>
+
+    </div>
+
+    
+    
+<div class="disqus">
+    <div id="disqus_thread"></div>
+
+    <script>
+    var disqus_config = function () {
+        this.page.url = "http://theduke.at";
+        this.page.identifier = "1a6a226e-cf19-47fa-b951-27b2f984cfbe";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://the-duke.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+    
+</div>
+
+    </div>
+</div>
+
+<footer class="footer">
+    <a href="/">theduke.at</a>
+    | &#xA9; Christoph Herzog (theduke),  2017 | Vienna, Austria
+</footer>
+
+</div>
+</body>
+
+</html>

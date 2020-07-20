@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-36849244-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-36849244-1');
+    </script>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title>The Sad State of File Sharing Across Devices | theduke.at</title>
+
+    <link data-react-helmet="true" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Lora|Tangerine|Lato|Source+Sans+Pro">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/styles.css">
+
+    
+
+    
+    
+</head>
+
+<body>
+<div>
+
+<header class="topnav">
+    <a href="/" class="topnav-brand">theDuke</a>
+
+    <!-- <a href="/me" class="topnav-link">Me</a> -->
+    <a href="/blog" class="topnav-link">Blog</a>
+
+    <div class="topnav-social">
+        <a href="https://github.com/theduke" target="_blank">
+            <i class="fa fa-4 fa-github-square"></i>
+        </a>
+
+        <a href="https://twitter.com/theduke_at" target="_blank">
+            <i class="fa fa-twtr-custom"></i>
+        </a>
+    </div>
+</header>
+
+
+<div class="main">
+    <div class="container main-container">
+        
+<div class="post">
+    <h1 class="page-title display-3">The Sad State of File Sharing Across Devices</h1>
+    <span class="post-date">2016-09-04</span>
+
+    <div class="page-content">
+        <p>In the 90ies <a href="http://www.ubiq.com/hypertext/weiser/UbiHome.html">Mark Weiser</a> coined 
+the term <a href="https://en.wikipedia.org/wiki/Ubiquitous_computing">Ubiquitous Computing</a>,
+a vision of a world where we are surrounded by countless smart devices, which 
+are connected and provide seamless and fluid interoperability. </p>
+<p>In the last decade, we have made big steps in achieving Weisers vision.
+The amount of 'smart, connected devices' we 
+interact with on a daily basis has multiplied.<br />
+On a typical day even a non-techie might use: a mobile phone, mp3 player, 
+laptop, tablet, e-reader, work deskop PC and smart TV. </p>
+<p>The coming revolution of the <a href="https://en.wikipedia.org/wiki/Internet_of_things">Internet of Things</a>
+promises to advance us even further in the same direction.</p>
+<p>But <em>how are we doing in terms of interoperability</em>?</p>
+<p>Imagine these scenarios:</p>
+<ul>
+<li>
+<p>You sit in some pub with a few friends.
+You show them a video you filmed yesterday on your phone.
+You're speakers are really bad, and you want to send it to a friend who has
+better speakers.<br />
+--&gt; You try to send the video over What's App. 
+You discover you have no cell reception. You give up.</p>
+</li>
+<li>
+<p>You are at a conference, about to give a talk. For some reason, 
+your MacBook won't work with the projector. You want to copy the presentation 
+to some other laptop. The WiFi is overloaded.<br />
+--&gt; You spend 5 minutes finding someone who still carries a USB stick and 
+use it to transfer the files.</p>
+</li>
+<li>
+<p>You are in an airplane, and you have a bunch of company documents stored on 
+your laptop, which you want to read on your tablet. 
+You forgot your micro USB cable.<br />
+--&gt; You curse yourself for forgetting to send yourself the documents with 
+GMail and downloading them on the tablet.</p>
+</li>
+<li>
+<p>You want to take some pictures with your camera, edit them on your laptop
+and then view them in a slideshow on your smart TV.<br />
+--&gt; Take pictures. Plug in camera. Edit. Check if your local media server is
+still running: Nope. Try to access your laptop from the TV with a Samba mount: Nope. Copy the pictuers to an SD card, insert it to your TV. Not working. Plug in your laptop to the TV: SUCCESS!</p>
+</li>
+</ul>
+<p>Everytime I run into one of those situations, I just get really angry and 
+frustrated.
+Why is it still such a hassle to do accomplish these tasks, in 2016?</p>
+<p>This <a href="https://xkcd.com/949/">XKCD</a> catpures it well:</p>
+<p><img src="https://imgs.xkcd.com/comics/file_transfer.png" alt="XKCD 949" title="XKCD 949 - File Transfer" /></p>
+<p>We are starting to use more and more devices everyday, but the software they are
+running is not designed with interoperability as a first class concern or goal.</p>
+<p>There is an endless amount of file sharing apps for iOS and Android.
+There are countless protocols and options for discovering devices and sharing files,
+including &quot;ancient&quot; options like Samba, NFS and FTP or more recent ones like 
+<a href="https://developer.bluetooth.org/TechnologyOverview/Pages/FTP.aspx">Bluetooth service discovery and File Transfer profile</a>.</p>
+<p>But most solutions solutions require specific software to be installed on both devices.<br />
+And other workarounds rely on internet connectivity and a centralized service, 
+like Email, messenger apps or Dropbox.</p>
+<p>What the world really needs is a universally accepted protocol for device discovery
+and file sharing, which works over different communication channels (Bluetooth, WiFi) 
+and is installed by default on every device.</p>
+<p>For some discussion, check out this 
+<a href="https://news.ycombinator.com/item?id=12424258">Hackernews thread</a> I started.</p>
+
+    </div>
+
+    
+    
+<div class="disqus">
+    <div id="disqus_thread"></div>
+
+    <script>
+    var disqus_config = function () {
+        this.page.url = "http://theduke.at";
+        this.page.identifier = "f0ec1aff-2bbf-413d-b163-f13278da9142";
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://the-duke.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+    
+</div>
+
+    </div>
+</div>
+
+<footer class="footer">
+    <a href="/">theduke.at</a>
+    | &#xA9; Christoph Herzog (theduke),  2017 | Vienna, Austria
+</footer>
+
+</div>
+</body>
+
+</html>
