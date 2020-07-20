@@ -1,7 +1,7 @@
 +++
 category = "develop"
 title = "Prevent Adblock from Blocking Fontawesome Icons"
-date = "2016-09-05"
+date = 2016-09-05
 tags = ["adblock", "blocking", "fontawesome", "icons", "html", "css", "develop"]
 path = "blog/develop/prevent-adblock-from-blocking-fontawesome-icons"
 

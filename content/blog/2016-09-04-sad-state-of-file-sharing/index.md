@@ -1,7 +1,7 @@
 +++
 category = "develop"
 title = "The Sad State of File Sharing Across Devices"
-date = "2016-09-04"
+date = 2016-09-04
 tags = [ "rant", "ubiquitous-computing", "file-sharing", "file-transfer", "interoperability" ]
 path = "blog/develop/sad-state-of-file-sharing"
 

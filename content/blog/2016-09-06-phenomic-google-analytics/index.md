@@ -1,7 +1,7 @@
 +++
 category = "develop"
 title = "How To Use Google Analytics With Phenomic (Static Site Generator)"
-date = "2016-09-06"
+date = 2016-09-06
 tags = ["phenomic", "google-analytics", "ga", "static-site-generator", "webpack", "react", "javascript", "random-tip", "develop"]
 path = "blog/develop/how-to-use-google-analytics-with-phenomic"
 

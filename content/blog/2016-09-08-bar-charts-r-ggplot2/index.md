@@ -1,7 +1,7 @@
 +++
 category = "science"
 title = "Beginners Guide to  Creating Grouped and Stacked Bar Charts in R With ggplot2"
-date = "2016-09-09"
+date = 2016-09-09
 tags = ["r", "r-lang", "chart", "plot", "bar", "barchart", "tutorial", "guide", "statistics", "science"]
 path = "blog/science/beginners-guide-to-creating-grouped-and-stacked-bar-charts-in-r-with-ggplot2"
 
